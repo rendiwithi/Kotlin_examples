@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Kotlin_examples</string>
+    <string name="kotlin_hot_reaload">Kotlin Hot Reaload</string>
+    <string name="happy_birthday_rendi">Happy BirthDay, Rendi!</string>
+    <string name="from_myself">From MySelf</string>
 </resources>
