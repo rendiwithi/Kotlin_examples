@@ -3,7 +3,7 @@ package com.example.kotlin_examples
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,18 +12,35 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton: Button = findViewById(R.id.button)
         rollButton.setOnClickListener {
-            secRollDice()
+//            secRollDice()
+            rollDiceSec()
             rollDice()
         }
     }
 
-    private fun secRollDice() {
-        val diceSec = SecDice(9)
-        val secRand = diceSec.secDice()
-
-        val resultSecDice: TextView = findViewById(R.id.secDice)
-        resultSecDice.text = secRand.toString()
+    private fun rollDiceSec() {
+        val diceSec = SecDice(6)
+        val diceSecRoll = diceSec.secDiceRoll()
+        val diceImageSec: ImageView = findViewById(R.id.imageSec)
+        val drawableImageSec = when (diceSecRoll) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+        diceImageSec.setImageResource(drawableImageSec)
     }
+//
+//    private fun secRollDice() {
+//        val diceSec = SecDice(9)
+//        val secRand = diceSec.secDice()
+//
+//        val resultSecDice: TextView = findViewById(R.id.secDice)
+//        resultSecDice.text = secRand.toString()
+//    }
+//
 
     /**
      * Roll the dice and update the screen with the result.
@@ -33,11 +50,22 @@ class MainActivity : AppCompatActivity() {
         val dice = Dice(6)
         val diceRoll = dice.roll()
         // Update the screen with the dice roll
-        val resultTextView: TextView = findViewById(R.id.diceNumber)
-        resultTextView.text = diceRoll.toString()
+        val diceImage: ImageView = findViewById(R.id.imageView)
+        val drawableSource = when (diceRoll) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+        diceImage.setImageResource(drawableSource)
+//        Update the content description
+//        diceImage.contentDescription = diceRoll.toString()
     }
 }
 
+//
 class Dice(private val numSide: Int) {
     fun roll(): Int {
         return (1..numSide).random()
@@ -45,7 +73,7 @@ class Dice(private val numSide: Int) {
 }
 
 class SecDice(private val number: Int) {
-    fun secDice(): Int {
-        return (6..number).random()
+    fun secDiceRoll(): Int {
+        return (1..number).random()
     }
 }
