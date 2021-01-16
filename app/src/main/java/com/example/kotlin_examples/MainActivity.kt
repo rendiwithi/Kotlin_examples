@@ -4,11 +4,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import com.example.kotlin_examples.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity :AppCompatActivity(){
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.tip_app)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
+}
+
+//class MainActivity : AppCompatActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.tip_app)
 //
 //        val rollButton: Button = findViewById(R.id.button)
 //        rollButton.setOnClickListener {
@@ -50,8 +62,8 @@ class MainActivity : AppCompatActivity() {
 //        val drawableSource = dice.rollDiceImage()
 //        diceImage.setImageResource(drawableSource)
 //
-    }
-}
+//    }
+//}
 //
 //
 //class Dice(private val numSide: Int) {
